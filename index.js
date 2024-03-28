@@ -1,6 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 const nodemailer = require("nodemailer");
+
+const app = express();
+
+const port = 5000;
+
+app.get('/', (req, res) => {
+  res.send('App works!!');
+});
+
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -14,7 +22,7 @@ const transporter = nodemailer.createTransport({
 });
 
 /* GET users listing. */
-router.get('/', async function(req, res, next) {
+app.get('/api', async function(req, res, next) {
 let mail = "sparshtandon2409@gmail.com"
 
 
@@ -29,6 +37,13 @@ let mail = "sparshtandon2409@gmail.com"
 
   
   res.send('respond with a resource')
-});
+})
 
-module.exports = router;
+//  res.json({
+//       msg: "Error",
+//       Code: 404,
+//       err: error,
+//     });
+app.listen(port, (err) => {
+  console.log(`running server on from port:::::::${port}`, err);
+})
