@@ -1,12 +1,13 @@
 const express = require('express');
 const nodemailer = require("nodemailer");
-
+const path = require('path');
 const app = express();
 
 const port = 5000;
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.send('App works!!');
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
 
@@ -20,6 +21,7 @@ const transporter = nodemailer.createTransport({
     pass: "bjrq fjfj jvyv vmwp"
   },
 });
+
 
 /* GET users listing. */
 app.get('/api', async function(req, res, next) {
