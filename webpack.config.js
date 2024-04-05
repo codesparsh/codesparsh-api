@@ -1,12 +1,18 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: './index.js',
+  target: 'node',
+  entry: './index.js', // Assuming your entry file is named index.js
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'final.js',
+    filename: 'bundle.js',
   },
-  target: 'node',
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'public', to: 'public' } // Copy contents of 'public' folder to 'dist/public'
+      ]
+    }),
+  ],
 };

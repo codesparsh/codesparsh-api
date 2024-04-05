@@ -7,7 +7,7 @@ const port = 5000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
@@ -37,15 +37,9 @@ let mail = "sparshtandon2409@gmail.com"
     html: "<b>Hello world?</b>", // html body
   });
 
-  
   res.send('respond with a resource')
 })
 
-//  res.json({
-//       msg: "Error",
-//       Code: 404,
-//       err: error,
-//     });
 app.listen(port, (err) => {
-  console.log(`running server on from port:::::::${port}`, err);
+  console.log(`running server on port::${port}`);
 })
